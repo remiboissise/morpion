@@ -21,9 +21,19 @@
     {
         display: flex;
         justify-content: center;
-        padding: 5%;
+        padding: 3%;
         button{
             font-family: 'Retro60Prime';
+            background-color: $white;
+            border: none;
+            color: $black;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 0.8rem;
+            outline: none;
+            cursor: pointer;
         }
     }
 }
