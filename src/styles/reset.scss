@@ -1,0 +1,24 @@
+/* ============
+    Reset
+=============== */
+
+@font-face {
+    font-family: 'Retro60Prime';
+    src: url('../fonts/Retro60Prime.ttf') format('truetype')
+}
+
+html {
+    box-sizing: border-box;
+}
+  
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+figure,
+body {
+    margin: 0;
+    font-family: 'Retro60Prime';
+}

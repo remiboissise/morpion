@@ -1,0 +1,16 @@
+.square {
+    background: $white;
+    border: 1px solid $black;
+    font-size: 5vw;
+    font-weight: bold;
+    line-height: 10vw;
+    height:10vw;
+    margin-right: 2px;
+    margin-top: 2px;
+    text-align: center;
+    width: 10vw;
+
+    &:focus {
+        outline: none;
+    }
+}
