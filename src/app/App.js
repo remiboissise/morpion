@@ -91,7 +91,7 @@ export default class App extends React.Component {
     const squares_flat = squares.flat(2);
     const winner = this.winner(squares);
     (winner) ? status = "Et le gagnant est..." + (this.state.xIsNext ? "'O'" : "'X'") : status = "Vous pouvez le faire " + (this.state.xIsNext ? "'X'" : "'O'");
-    (!squares_flat.includes(null)) ? status = "Match nul ! CLIQUEZ sur REJOUER" : status = status;
+    (!squares_flat.includes(null) && !winner) ? status = "Match nul ! CLIQUEZ sur REJOUER" : status = status;
 
     return (
       <>
@@ -101,9 +101,11 @@ export default class App extends React.Component {
           <div className="board">
             <Board squares={squares} onClick={(event) => this.handleClick(event)} />
           </div>
-          <button type="button" className="restart" onClick={this.restartGame.bind(this)}>
-            Rejouer
-          </button>
+          <div className="restart">
+            <button type="button" onClick={this.restartGame.bind(this)}>
+                Rejouer
+            </button>
+          </div>
         </div>
       </>
     );

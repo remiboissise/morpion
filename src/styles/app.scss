@@ -19,9 +19,11 @@
     }
     .restart 
     {
-        width: 20%;
         display: flex;
         justify-content: center;
-        font-family: 'Retro60Prime';
+        padding: 5%;
+        button{
+            font-family: 'Retro60Prime';
+        }
     }
 }
