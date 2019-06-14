@@ -23,6 +23,11 @@ export default class App extends React.Component {
     }
 
     restartGame() {
+        ReactGA.event({
+            category: 'Game',
+            action: 'Replay'
+        });
+
         this.setState({
         squares: [
             [null, null, null], 
@@ -30,7 +35,7 @@ export default class App extends React.Component {
             [null, null, null]
         ],
         xIsNext: true
-        })
+        });
     }
 
     handleClick(event) {
