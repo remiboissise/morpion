@@ -19,6 +19,7 @@ export default class App extends React.Component {
 
     componentDidMount() {
         ReactGA.initialize(configuration.googleAnalyticsTrackingId);
+        ReactGA.pageview(window.location.pathname + window.location.search);
     }
 
     restartGame() {
