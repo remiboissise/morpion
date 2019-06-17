@@ -7,13 +7,15 @@ export default class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-        squares: [
-            [null, null, null], 
-            [null, null, null], 
-            [null, null, null]
-        ],
-        xIsNext: true,
-
+            squares: [
+                [null, null, null], 
+                [null, null, null], 
+                [null, null, null]
+            ],
+            xIsNext: true,
+            gameIsOver: false,
+            xWins: 0,
+            oWins: 0
         }
     }
 
@@ -29,27 +31,61 @@ export default class App extends React.Component {
         });
 
         this.setState({
-        squares: [
-            [null, null, null], 
-            [null, null, null], 
-            [null, null, null]
-        ],
-        xIsNext: true
+            squares: [
+                [null, null, null], 
+                [null, null, null], 
+                [null, null, null]
+            ],
+            xIsNext: true,
+            gameIsOver: false
         });
+    }
+
+    resetGame() {
+        this.setState({
+            squares: [
+                [null, null, null], 
+                [null, null, null], 
+                [null, null, null]
+            ],
+            xIsNext: true,
+            gameIsOver: false,
+            xWins: 0,
+            oWins: 0
+        })
     }
 
     handleClick(event) {
         let row = event.currentTarget.dataset.row;
         let column = event.currentTarget.dataset.column;
         const squares = this.state.squares;
+
+        // On va vérifier si la case n'est pas déjà prise
+        if(squares[row][column] != null || this.state.gameIsOver) { return };
+
         const squares_flat = squares.flat(2);
-        if(this.winner(squares) || !squares_flat.includes(null) || squares[row][column] != null) { 
-        return;
-        }
         squares[row][column] = this.state.xIsNext ? 'X' : 'O';
+
+        // On va vérifier s'il y a un vainqueur ou match nul
+        if(this.winner(squares) || !squares_flat.includes(null)) { 
+            let { oWins, xWins, xIsNext, gameIsOver } = this.state;
+            if(!this.state.gameIsOver) {
+                this.state.xIsNext ? xWins += 1 : oWins += 1;
+                xIsNext = !xIsNext;
+                gameIsOver = !gameIsOver;
+            }
+            return this.setState({
+                squares: squares, 
+                xIsNext: xIsNext,
+                oWins: oWins,
+                xWins: xWins,
+                gameIsOver: gameIsOver
+            })
+        }
+
         this.setState({
-        squares: squares,
-        xIsNext: !this.state.xIsNext
+            squares: squares,
+            xIsNext: !this.state.xIsNext
         })
     }
 
@@ -98,7 +134,7 @@ export default class App extends React.Component {
     }
 
     render() {
-        let status;
+        let status, { oWins, xWins } = this.state;
         const squares = this.state.squares;
         const squares_flat = squares.flat(2);
         const winner = this.winner(squares);
@@ -109,12 +145,23 @@ export default class App extends React.Component {
             <div className="game">
                 <p className="title">Morpion</p>
                 <p className="status">{status}</p>
+                <div className="scores">
+                    <span className="score">   
+                        X : {xWins}
+                    </span>
+                    <span className="score">
+                        O : {oWins}
+                    </span>
+                </div>
                 <div className="board">
                     <Board squares={squares} onClick={(event) => this.handleClick(event)} />
                 </div>
                 <div className="restart">
                     <button type="button" onClick={this.restartGame.bind(this)}>
                         Rejouer
+                    </button>
+                    <button type="button" onClick={this.resetGame.bind(this)}>
+                        Recommencer
                     </button>
                 </div>
             </div>

@@ -1,16 +1,30 @@
 .square {
+    font-family: 'Retro60Prime';
     background: $white;
-    border: 1px solid $black;
-    font-size: 5vw;
+    border: 2px solid $black;
+    font-size: 3vw;
+    border-radius: 28px;
     font-weight: bold;
     line-height: 10vw;
-    height:10vw;
+    height:8vw;
     margin-right: 5px;
     margin-top: 5px;
     text-align: center;
-    width: 10vw;
+    width: 8vw;
 
     &:focus {
         outline: none;
+    }
+
+    &:hover {
+        border-color: $pink;
+    }
+}
+
+@media screen and (max-width: $small) {
+    .square {
+        width: 20vw;
+        height:20vw;
+        border-radius: 20px;
     }
 }

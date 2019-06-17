@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
+
     .title {
         display: flex;
         justify-content: center;
@@ -9,24 +10,32 @@
         font-weight: bolder;
         color: $black;
     }
+
     .board {
         display: flex;
         justify-content: center;
     }
+
     .status {
         display: flex;
         justify-content: center;
+        text-align: center;
     }
-    .restart 
-    {
+
+    .scores {
         display: flex;
         justify-content: center;
         padding: 3%;
-        button{
+        flex-direction: row;
+        flex-wrap: wrap;
+        
+        span.score {
             font-family: 'Retro60Prime';
-            background-color: $white;
+            background-color: $black;
+            border-radius: 28px;
+            font-weight: 500;
             border: none;
-            color: $black;
+            color: $white;
             padding: 15px 32px;
             text-align: center;
             text-decoration: none;
@@ -34,6 +43,50 @@
             font-size: 0.8rem;
             outline: none;
             cursor: pointer;
+            box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2);
+            margin: 5px 5px;
+        }
+    }
+
+    .restart {
+        display: flex;
+        justify-content: center;
+        padding: 3%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        
+        button{
+            font-family: 'Retro60Prime';
+            background-color: $black;
+            border-radius: 28px;
+            font-weight: 500;
+            border: none;
+            color: $white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 0.8rem;
+            outline: none;
+            cursor: pointer;
+            box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2);
+            margin: 5px 5px;
+        }
+    }
+}
+
+@media screen and (max-width: $small) {
+    .game {
+        .status {
+            font-size: 0.7rem;
+        }
+
+        .restart {
+            button{
+                font-size: 0.7rem;
+                padding: 15px 15px;
+                border-radius: 20px;
+            }
         }
     }
 }
