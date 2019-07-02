@@ -6,5 +6,5 @@ Découverte du Framework React.
 Création du jeu du Morpion (a.k.a Tic Tac Toe game). Inspiré du tutoriel mis en place par ce même Framework [à cette adresse].
 
 ## Demo
-[Demo]: https://remiboissise.github.io/morpion/
+[Demo]: https://morpion.netlify.com
 Voir la [Demo]
