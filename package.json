@@ -1,8 +1,7 @@
 {
   "name": "morpion",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
-  "homepage": "https://remiboissise.github.io/morpion/",
   "dependencies": {
     "node-sass": "^4.12.0",
     "react": "^16.8.6",
@@ -15,8 +14,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "gh-pages -d build",
-    "predeploy": "npm run build"
+    "publish": "npm run build && netlify deploy --prod"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -32,9 +30,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "gh-pages": "^2.0.1"
   },
   "repository": {
     "type": "git",
